@@ -1,0 +1,6 @@
+{
+    "error": {
+        "projectNotFound": "Project does not exist",
+        "projectActive": "Cannot delete an active project"
+    }
+}

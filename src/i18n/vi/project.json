@@ -1,0 +1,6 @@
+{
+    "error": {
+        "projectNotFound": "Project không tồn tại",
+        "projectActive": "Không cho phép xóa dự án đang hoạt động"
+    }
+}

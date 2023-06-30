@@ -1,0 +1,6 @@
+{
+    "errors": {
+        "gitLinkIsNotValid": "gitLink không hợp lệ",
+        "gitTokenIsNotValid": "gitToken không hợp lệ"
+    }
+}

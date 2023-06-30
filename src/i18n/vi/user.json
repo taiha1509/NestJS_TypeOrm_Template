@@ -1,0 +1,8 @@
+{
+    "error": {
+        "userNotFound": "Người dùng không tồn tại",
+        "userAlreadyExist": "Người dùng đã tồn tại",
+        "userDeleteMySelf": "Nguời dùng không được xóa chính mình",
+        "emailAlreadyExists": "Email đã tồn tại"
+    }
+}

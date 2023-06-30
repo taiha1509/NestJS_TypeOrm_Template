@@ -1,0 +1,6 @@
+{
+    "invalidGitToken": "Invalid Git token",
+    "invalidGitInformation": "Invalid Git information",
+    "mergeRequest.notOpen": "Merge request state's is not open",
+    "mergeRequest.conflict": "Cannot merge a conflicted merge request"
+}

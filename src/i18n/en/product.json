@@ -1,0 +1,5 @@
+{
+    "productNotFound": "Product is not found",
+    "quantityExceed": "Not enough quantity",
+    "productAlreadyInCart": "Product is already in cart"
+}

@@ -1,0 +1,6 @@
+{
+    "cartNotFound": "Không tìm thấy giỏ hàng",
+    "cartEmpty": "Giỏ hàng trống",
+    "cardExpired": "Thẻ tín dụng/ghi nợ đã hết hạn sử dụng",
+    "quantityNotEnough": "Số lượng sản phẩm không đủ"
+}

@@ -1,0 +1,6 @@
+{
+    "cartNotFound": "Cart is not found",
+    "cartEmpty": "Cart is empty",
+    "cardExpired": "The credit/debit card expired",
+    "quantityNotEnough": "The product quantity is not enough"
+}

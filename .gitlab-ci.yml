@@ -1,0 +1,18 @@
+stages:
+    - deploy
+
+deploy_dev:
+    stage: deploy
+    rules:
+        - if: $CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "develop"
+    image: alpine
+    tags:
+        - academy-online-shopping-api
+    script:
+        - git pull origin develop
+        - cp /home/ubuntu/academy-exercise/online-shopping/online-shopping-backend/.env .
+        - docker compose -f docker-compose_dev.yaml build --no-cache
+        - docker compose -f docker-compose_dev.yaml up -d
+        - docker rmi $(docker images -f "dangling=true" -q) -f
+        - docker builder prune -f
+        - echo "Application successfully deployed."
