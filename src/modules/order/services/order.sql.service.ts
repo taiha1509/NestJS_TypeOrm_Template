@@ -87,15 +87,15 @@ export class OrderSqlService {
                 orderDirection = OrderDirection.DESC,
                 page = DEFAULT_FIRST_PAGE,
                 limit = DEFAULT_LIMIT_FOR_PAGINATION,
-                status,
+                statuses,
             } = query;
 
             const qb = this.orderRepository
                 .createQueryBuilder('o')
                 .where(
                     new Brackets((qb) => {
-                        if (status) {
-                            qb.orWhere('o.status = :status', { status });
+                        if (statuses && statuses?.length) {
+                            qb.orWhere('o.status IN (:statuses)', { statuses });
                         }
                     }),
                 )

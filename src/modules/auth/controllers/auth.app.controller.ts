@@ -575,7 +575,7 @@ export class AuthAppController {
     async getUserProfile(@Req() req) {
         try {
             const loginUser = req.loginUser;
-            const profile = await this.userSqlService.getUserById(
+            const profile = await this.authSqlService.getUserProfile(
                 loginUser.id,
                 userProfileAttributes,
             );

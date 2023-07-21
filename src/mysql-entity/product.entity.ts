@@ -6,6 +6,7 @@ import {
     JoinColumn,
     JoinTable,
     ManyToMany,
+    OneToMany,
     OneToOne,
 } from 'typeorm';
 import {
@@ -17,6 +18,9 @@ import { Category } from './category.entity';
 import { CustomerCart } from './customer-cart.entity';
 import { CustomerCartItem } from './customer-cart-item.entity';
 import { CustomerOrder } from './customer-order.entity';
+import { ProductFeedback } from './product-feedback.entity';
+import { File } from './file.entity';
+import { CustomerProductWishList } from './customer-product-wishlist';
 
 @Entity({
     name: 'products',
@@ -25,21 +29,20 @@ export class Product extends MysqlBaseEntity {
     @Column()
     name: string;
 
-    @Column({ nullable: false, type: 'varchar' })
-    imageUrl: string;
-
     @Column({ nullable: false, type: 'int' })
     quantity: number;
 
-    @Column({ nullable: false, type: 'enum', enum: Object.values(ProductSize) })
-    size: ProductSize;
+    @Column({
+        nullable: false,
+        type: 'json',
+    })
+    size: ProductSize[];
 
     @Column({
         nullable: false,
-        type: 'enum',
-        enum: Object.values(ProductColor),
+        type: 'json',
     })
-    color: ProductColor;
+    color: ProductColor[];
 
     @Column({
         default: ProductStatus.SELLING,
@@ -78,4 +81,13 @@ export class Product extends MysqlBaseEntity {
 
     @OneToOne(() => CustomerCartItem, (cartItem) => cartItem.product)
     cartItem: CustomerCartItem;
+
+    @OneToMany(() => ProductFeedback, (pr) => pr.product)
+    feedbacks: ProductFeedback[];
+
+    @ManyToMany(() => File, (f) => f.products)
+    @JoinTable()
+    images: File[];
+
+    customerProductWishList?: CustomerProductWishList[];
 }

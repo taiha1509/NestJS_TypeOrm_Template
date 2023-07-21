@@ -11,10 +11,15 @@ import { UserToken } from '@/mysql-entity/user-token.entity';
 import { Product } from '@/mysql-entity/product.entity';
 import { AuthGoogleService } from '../auth/services/auth.google.service';
 import { SendGridService } from '../common/services/sendgrid.service';
+import { UserCmsController } from './controllers/user.cms.controller';
+import { UserCmsSqlService } from './services/user.cms.sql.service';
+import { File } from '@/mysql-entity/file.entity';
 
 @Module({
-    imports: [TypeOrmModule.forFeature([User, UserOTP, UserToken, Product])],
-    controllers: [UserAppController],
+    imports: [
+        TypeOrmModule.forFeature([User, UserOTP, UserToken, Product, File]),
+    ],
+    controllers: [UserAppController, UserCmsController],
     providers: [
         UserSqlService,
         JwtService,
@@ -22,6 +27,7 @@ import { SendGridService } from '../common/services/sendgrid.service';
         AuthLoginService,
         AuthGoogleService,
         SendGridService,
+        UserCmsSqlService,
     ],
     exports: [UserSqlService],
 })

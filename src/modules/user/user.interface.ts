@@ -1,5 +1,11 @@
 import { ICommonListQuery } from 'src/common/interfaces';
-import { SystemRole, UserGender, UserOrderBy } from './user.constant';
+import {
+    SystemRole,
+    UserGender,
+    UserOrderBy,
+    UserRole,
+    UserStatus,
+} from './user.constant';
 
 export interface IUserCreateBody {
     email: string;
@@ -18,6 +24,8 @@ export interface IUserUpdateBody extends IUpdateUserProfileDTO {
 
 export interface IUserListQuery extends ICommonListQuery {
     orderBy: UserOrderBy;
+    roles?: UserRole[];
+    statuses?: UserStatus[];
 }
 
 export interface IUpdateUserProfileDTO {
@@ -28,4 +36,28 @@ export interface IUpdateUserProfileDTO {
     description?: string | null;
     phoneNumber?: string | null;
     gender?: UserGender | null;
+}
+
+export interface IUpdateCustomerDTO {
+    name?: string;
+    phoneNumber?: string;
+    gender?: UserGender;
+    address?: string;
+    status?: UserStatus;
+    description?: string;
+    updatedBy?: number;
+}
+
+export interface ICreateAdminUserDTO extends IUpdateAdminUserDTO {
+    email: string;
+    createdBy?: number;
+}
+
+export interface IUpdateAdminUserDTO {
+    name: string;
+    avatarId?: number;
+    phoneNumber: string;
+    role: UserRole.ADMIN | UserRole.SUPER_ADMIN;
+    status: UserStatus;
+    updatedBy?: number;
 }

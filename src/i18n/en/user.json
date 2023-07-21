@@ -3,6 +3,7 @@
         "userNotFound": "User does not exist",
         "userAlreadyExist": "User existed",
         "userDeleteMySelf": "User does not delete myself",
-        "emailAlreadyExists": "Email already exists"
+        "emailAlreadyExists": "Email already exists",
+        "doNotAllowAction": "This action is not allowed"
     }
 }

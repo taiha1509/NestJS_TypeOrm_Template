@@ -4,6 +4,8 @@ import dayjs from '../../plugins/dayjs';
 
 import dotenv from 'dotenv';
 import _pick from 'lodash/pick';
+import { SetMetadata } from '@nestjs/common';
+import { UserRole } from 'aws-sdk/clients/workmail';
 dotenv.config();
 
 const DEFAULT_TIMEZONE_NAME = process.env.TIMEZONE_DEFAULT_NAME;
@@ -58,3 +60,5 @@ export const formatApiUrl = (
 export const getDataFields = (objectDetail: object, fields: string[]) => {
     return _pick(objectDetail, fields);
 };
+
+export const Roles = (...roles: UserRole[]) => SetMetadata('roles', roles);

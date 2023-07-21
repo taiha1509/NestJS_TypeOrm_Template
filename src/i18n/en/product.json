@@ -1,5 +1,7 @@
 {
     "productNotFound": "Product is not found",
     "quantityExceed": "Not enough quantity",
-    "productAlreadyInCart": "Product is already in cart"
+    "customerProvidedFeedback": "You have provided feedback for this product",
+    "imagesInValid": "Image list is invalid",
+    "productAlreadyInWishlist": "Product is already in your wishlist"
 }

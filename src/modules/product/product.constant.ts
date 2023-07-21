@@ -15,7 +15,6 @@ export const productListAttributes = [
     'id',
     'name',
     'price',
-    'imageUrl',
     'quantity',
     'status',
     'size',
@@ -27,6 +26,23 @@ export const productListAttributes = [
 ];
 
 export const productDetailAttributes = [...productListAttributes];
+
+export const productFileAttributes = [
+    'id',
+    'order',
+    'type',
+    'productId',
+    'fileId',
+    'createdAt',
+];
+
+export const productCategoryAttributes = [
+    'id',
+    'productId',
+    'categoryId',
+    'priorityOrder',
+    'createdAt',
+];
 
 export enum ProductSize {
     S = 's',
@@ -48,4 +64,19 @@ export enum ProductColor {
     YELLOW = 'yellow',
     ORANGE = 'orange',
     PURPLE = 'purple',
+}
+
+export const productFeedbackAttributes = [
+    'id',
+    'comment',
+    'productId',
+    'customerId',
+    'rating',
+    'createdAt',
+];
+
+export enum ProductImageType {
+    PRIMARY = 'primary',
+    SECONDARY = 'secondary',
+    THUMBNAIL = 'thumbnail',
 }

@@ -6,6 +6,7 @@ import {
     TEXTAREA_MAX_LENGTH,
 } from '@/common/constants';
 import Joi from '@/plugins/joi';
+import { OrderStatus } from 'aws-sdk/clients/outposts';
 import {
     BankRule,
     CARD_NUMBER_LENGTH,
@@ -71,7 +72,21 @@ export const CreateCustomerOrderSchema = Joi.object().keys({
 
 export const GetOrderListSchema = Joi.object().keys({
     ...CommonListQuerySchema,
-    status: Joi.string()
-        .valid(...Object.values(CustomerOrderStatus))
+    statuses: Joi.array()
+        .items(Joi.string().valid(...Object.values(CustomerOrderStatus)))
+        .unique()
         .optional(),
 });
+
+export const getAdminOrderListSchema = GetOrderListSchema.keys({
+    isPaid: Joi.bool().optional(),
+});
+
+export const updateAdminOrderSchema = Joi.object()
+    .keys({
+        status: Joi.string()
+            .valid(...Object.values(CustomerOrderStatus))
+            .optional(),
+        isPaid: Joi.boolean().optional(),
+    })
+    .or('status', 'isPaid');

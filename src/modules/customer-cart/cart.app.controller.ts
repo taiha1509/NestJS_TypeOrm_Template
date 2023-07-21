@@ -86,8 +86,16 @@ export class CartAppController {
                     this.i18n.t('product.productNotFound'),
                 );
             }
+            // check if product already exists in cart
+            const productInCart = await this.cartSqlService.getProductInCart(
+                body.productId,
+                customerId,
+            );
             // check available product quantity
-            if (body.quantity > product.quantity) {
+            if (
+                (body.quantity + productInCart?.quantity || 0) >
+                product.quantity
+            ) {
                 return new ErrorResponse(
                     HttpStatus.BAD_REQUEST,
                     this.i18n.t('errors.400'),
@@ -100,31 +108,12 @@ export class CartAppController {
                     ],
                 );
             }
-            // check if product already exists in cart
-            const productExistInCart =
-                await this.cartSqlService.checkProductExistInCart(
-                    body.productId,
-                    customerId,
-                );
-            if (productExistInCart) {
-                return new ErrorResponse(
-                    HttpStatus.BAD_REQUEST,
-                    this.i18n.t('errors.400'),
-                    [
-                        {
-                            errorCode: HttpStatus.ITEM_ALREADY_EXIST,
-                            key: 'productId',
-                            message: this.i18n.t(
-                                'product.productAlreadyInCart',
-                            ),
-                        },
-                    ],
-                );
-            }
+            body.quantity += productInCart?.quantity || 0;
             const result = await this.cartSqlService.addProductToCart(
                 customerId,
                 body.productId,
                 body.quantity,
+                !!productInCart,
             );
             return new SuccessResponse(result);
         } catch (error) {

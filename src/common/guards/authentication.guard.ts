@@ -20,6 +20,8 @@ export class AuthenticationGuard implements CanActivate {
     ) {}
     async canActivate(context: ExecutionContext): Promise<boolean> {
         const request = context.switchToHttp().getRequest();
+        // token has validated
+        if (!!request.loginUser) return true;
         const token = extractToken(request.headers.authorization || '');
         if (!token) {
             throw new UnauthorizedException();

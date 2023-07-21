@@ -17,6 +17,9 @@ import { CategoryModule } from './modules/category/category.module';
 import { SendGridService } from './modules/common/services/sendgrid.service';
 import { CartModule } from './modules/customer-cart/cart.module';
 import { OrderModule } from './modules/order/order.module';
+import { FileModule } from './modules/file/file.module';
+import { GlobalModule } from './common/global.module';
+import { ExtractUserMiddleware } from './common/middleware/extract-user.middleware';
 
 @Module({
     imports: [
@@ -35,6 +38,8 @@ import { OrderModule } from './modules/order/order.module';
         CategoryModule,
         CartModule,
         OrderModule,
+        FileModule,
+        GlobalModule,
     ],
     controllers: [AppController],
     providers: [
@@ -53,6 +58,6 @@ import { OrderModule } from './modules/order/order.module';
 })
 export class AppModule implements NestModule {
     configure(consumer: MiddlewareConsumer) {
-        consumer.apply(HeaderMiddleware).forRoutes('*');
+        consumer.apply(HeaderMiddleware, ExtractUserMiddleware).forRoutes('*');
     }
 }

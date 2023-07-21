@@ -161,6 +161,7 @@ export class AuthLoginService {
             email: user.email,
             name: user.name,
             expiresIn: accessTokenExpiredIn,
+            role: user.role,
         };
         const accessToken = jwt.sign(payloadToken, tokenPrivateKey, {
             expiresIn: accessTokenExpiredIn,
@@ -183,6 +184,7 @@ export class AuthLoginService {
             id: user.id,
             email: user.email,
             name: user.name,
+            role: user.role,
             expiresIn: refreshTokenExpiredIn,
             hashToken,
         };

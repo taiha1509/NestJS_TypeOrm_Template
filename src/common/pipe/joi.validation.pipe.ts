@@ -4,11 +4,11 @@ import {
     PipeTransform,
     Scope,
 } from '@nestjs/common';
-import { ObjectSchema, ValidationResult, ValidationError } from 'joi';
+import { ValidationResult, ValidationError, AnySchema } from 'joi';
 
 @Injectable({ scope: Scope.REQUEST })
 export class JoiValidationPipe implements PipeTransform {
-    constructor(private schema: ObjectSchema) {}
+    constructor(private schema: AnySchema) {}
 
     transform(value) {
         const { error } = this.schema.validate(value, {

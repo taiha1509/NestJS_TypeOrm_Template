@@ -43,6 +43,7 @@ export const orderListAttributes = [
     'paymentMethod',
     'shippingFee',
     'status',
+    'isPaid',
     'items',
     'createdAt',
 ];

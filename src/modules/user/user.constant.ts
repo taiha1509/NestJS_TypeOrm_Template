@@ -9,6 +9,7 @@ export const userProfileAttributes = [
     'gender',
     'phoneNumber',
     'description',
+    'role',
     'createdAt',
     'status',
     'avatarId',
@@ -41,6 +42,7 @@ export enum UserGender {
 export enum UserStatus {
     ACTIVE = 'active',
     REGISTERING = 'registering',
+    DEACTIVATED = 'deactivated',
 }
 
 export const userListAttributes = [
@@ -53,6 +55,15 @@ export const userListAttributes = [
     'phoneNumber',
     'description',
     'avatarId',
+    'role',
     'createdAt',
     'createdBy',
 ];
+
+export enum UserRole {
+    ADMIN = 'admin',
+    SUPER_ADMIN = 'super_admin',
+    CUSTOMER = 'customer',
+}
+
+export const userDetailAttributes = [...userListAttributes];

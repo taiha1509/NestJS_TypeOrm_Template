@@ -1,4 +1,5 @@
 import * as JoiBase from 'joi';
+import { Root } from 'joi';
 import JoiDate from '@joi/date';
 
 const joiDateExtension = (joi) => {
@@ -17,5 +18,5 @@ const joiDateExtension = (joi) => {
     };
 };
 
-const Joi = JoiBase.extend(joiDateExtension);
+const Joi = JoiBase.extend(joiDateExtension) as Root;
 export default Joi;

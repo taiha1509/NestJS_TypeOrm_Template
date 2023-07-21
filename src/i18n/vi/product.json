@@ -1,5 +1,7 @@
 {
     "productNotFound": "Không tìm thấy sản phẩm",
     "quantityExceed": "Không đủ số lượng sản phẩm",
-    "productAlreadyInCart": "Sản phẩm đã có trong giỏ hàng"
+    "customerProvidedFeedback": "Bạn đã đánh giá sản phẩm này rồi",
+    "imagesInValid": "Danh sách ảnh không hợp lệ",
+    "productAlreadyInWishlist": "Sản phẩm đã có trong danh sách yêu thích"
 }

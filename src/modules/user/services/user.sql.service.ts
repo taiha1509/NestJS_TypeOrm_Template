@@ -34,46 +34,6 @@ export class UserSqlService {
         this.configService,
     );
 
-    async getUserList(query: IUserListQuery) {
-        try {
-            const {
-                page = +DEFAULT_FIRST_PAGE,
-                limit = +DEFAULT_LIMIT_FOR_PAGINATION,
-                keyword = '',
-                orderBy = DEFAULT_ORDER_BY,
-                orderDirection = DEFAULT_ORDER_DIRECTION,
-            } = query;
-            const whereCondition = [
-                {
-                    name: Like(`%${keyword}%`),
-                },
-                {
-                    email: Like(`%${keyword}%`),
-                },
-            ];
-            const [users, count] = await Promise.all([
-                this.userRepository.find({
-                    where: whereCondition,
-                    skip: (page - 1) * limit,
-                    take: limit,
-                    order: {
-                        [orderBy]: orderDirection,
-                    },
-                }),
-                this.userRepository.count({
-                    where: whereCondition,
-                }),
-            ]);
-            return {
-                totalItems: count,
-                items: users || [],
-            };
-        } catch (error) {
-            this.logger.error('Error in searchUsers service', error);
-            throw error;
-        }
-    }
-
     async getUserByField(
         field: string,
         value: any,
@@ -117,31 +77,6 @@ export class UserSqlService {
             return users;
         } catch (error) {
             this.logger.error('Error in getAllUser service', error);
-            throw error;
-        }
-    }
-
-    async getUsersByIds(userAttributes: string[], ids: number[]) {
-        try {
-            const users = await this.userRepository.find({
-                where: {
-                    id: In(ids),
-                },
-            });
-            return users;
-        } catch (error) {
-            this.logger.error('Error in getUsersByIds service', error);
-            throw error;
-        }
-    }
-
-    async createUser(user: IUserCreateBody): Promise<User> {
-        try {
-            const newUser = new User();
-            const insertedUser = await this.userRepository.save(newUser);
-            return insertedUser;
-        } catch (error) {
-            this.logger.error('Error in createUser service', error);
             throw error;
         }
     }

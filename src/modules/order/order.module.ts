@@ -11,6 +11,10 @@ import { CustomerCartItem } from '@/mysql-entity/customer-cart-item.entity';
 import { OrderSqlService } from './services/order.sql.service';
 import { ProductSqlService } from '../product/services/product.sql.service';
 import { CustomerOrder } from '@/mysql-entity/customer-order.entity';
+import { ProductFeedback } from '@/mysql-entity/product-feedback.entity';
+import { CustomerProductWishList } from '@/mysql-entity/customer-product-wishlist';
+import { CustomerOrderCmsController } from './controllers/order.cms.controller';
+import { OrderCmsSqlService } from './services/order.cms.service';
 
 @Module({
     imports: [
@@ -21,10 +25,18 @@ import { CustomerOrder } from '@/mysql-entity/customer-order.entity';
             CustomerCartItem,
             Product,
             CustomerOrder,
+            ProductFeedback,
+            CustomerProductWishList,
         ]),
     ],
-    controllers: [CustomerOrderAppController],
-    providers: [JwtService, CartSqlService, OrderSqlService, ProductSqlService],
+    controllers: [CustomerOrderAppController, CustomerOrderCmsController],
+    providers: [
+        JwtService,
+        CartSqlService,
+        OrderSqlService,
+        ProductSqlService,
+        OrderCmsSqlService,
+    ],
     exports: [],
 })
 export class OrderModule {

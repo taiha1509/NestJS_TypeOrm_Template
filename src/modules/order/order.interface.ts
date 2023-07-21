@@ -1,4 +1,5 @@
 import { ICommonListQuery } from '@/common/interfaces';
+import { OrderStatus } from 'aws-sdk/clients/outposts';
 import { CustomerOrderStatus, PaymentMethod } from './order.constant';
 
 export interface IBankingPaymentDetail {
@@ -28,5 +29,14 @@ export interface ICreateCustomerOrderDTO {
 }
 
 export interface IGetOrderListQuery extends ICommonListQuery {
+    statuses?: CustomerOrderStatus[];
+}
+
+export interface IGetAdminOrderListQuery extends IGetOrderListQuery {
+    isPaid?: string;
+}
+
+export interface IUpdateAdminOrderDTO {
+    isPaid?: boolean;
     status?: CustomerOrderStatus;
 }

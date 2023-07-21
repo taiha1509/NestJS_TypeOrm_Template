@@ -9,13 +9,13 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 const DEFAULT_TIMEZONE_NAME = process.env.TIMEZONE_DEFAULT_NAME;
-const DEAULT_TIMEZONE = process.env.TIMEZONE_DEFAULT;
+const DEFAULT_TIMEZONE = process.env.TIMEZONE_DEFAULT;
 
 @Injectable()
 export class HeaderMiddleware implements NestMiddleware {
     use(req: Request, _res: Response, next: NextFunction) {
         if (!req.headers[TIMEZONE_HEADER]) {
-            req.headers[TIMEZONE_HEADER] = DEAULT_TIMEZONE;
+            req.headers[TIMEZONE_HEADER] = DEFAULT_TIMEZONE;
         }
         if (!req.headers[TIMEZONE_NAME_HEADER]) {
             req.headers[TIMEZONE_NAME_HEADER] = DEFAULT_TIMEZONE_NAME;

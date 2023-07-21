@@ -86,6 +86,9 @@ export class CustomerOrder extends MysqlBaseEntity {
     })
     status: CustomerOrderStatus;
 
+    @Column()
+    isPaid: boolean;
+
     private _items: string | null;
     @Column({
         nullable: true,

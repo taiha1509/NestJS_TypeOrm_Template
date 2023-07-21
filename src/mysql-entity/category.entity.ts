@@ -1,6 +1,13 @@
 import { MysqlBaseEntity } from './base.entity';
-import { Column, DeleteDateColumn, Entity, ManyToMany } from 'typeorm';
+import {
+    Column,
+    DeleteDateColumn,
+    Entity,
+    ManyToMany,
+    OneToOne,
+} from 'typeorm';
 import { Product } from './product.entity';
+import { ProductCategory } from './product-category';
 
 @Entity({
     name: 'categories',
@@ -17,4 +24,6 @@ export class Category extends MysqlBaseEntity {
 
     @DeleteDateColumn({ default: null, type: Date })
     deletedAt?: Date;
+
+    productCategory?: ProductCategory;
 }

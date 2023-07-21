@@ -86,6 +86,7 @@ export class CartSqlService {
         customerId: number,
         productId,
         quantity: number,
+        productAlreadyInCart = false,
     ) {
         const queryRunner = await this.dataSource.createQueryRunner();
         try {
@@ -112,15 +113,32 @@ export class CartSqlService {
                 )?.id;
             }
 
-            const insertItemResult = await queryRunner.manager
-                .getRepository(CustomerCartItem)
-                .insert({ cartId, productId, quantity });
+            let itemId: number;
+            if (!productAlreadyInCart) {
+                // add new record
+                const insertItemResult = await queryRunner.manager
+                    .getRepository(CustomerCartItem)
+                    .insert({ cartId, productId, quantity });
+                itemId = insertItemResult.identifiers?.[0]?.id;
+            } else {
+                // add quantity
+                await queryRunner.manager
+                    .getRepository(CustomerCartItem)
+                    .update(
+                        { cartId, productId },
+                        {
+                            updatedAt: new Date(),
+                            updatedBy: customerId,
+                            quantity,
+                        },
+                    );
+            }
 
             await queryRunner.commitTransaction();
 
             return {
                 cartId,
-                itemId: insertItemResult?.identifiers?.[0]?.id,
+                itemId,
             };
         } catch (error) {
             this.logger.error(`Error in addProductToCart service, ${error}`);
@@ -143,6 +161,25 @@ export class CartSqlService {
             this.logger.error(
                 `Error in checkProductExistInCart service, ${error}`,
             );
+            throw error;
+        }
+    }
+
+    async getProductInCart(
+        productId: number,
+        customerId: number,
+        attributes = ['id', 'productId', 'quantity'],
+    ) {
+        try {
+            return await this.cartItemRepository
+                .createQueryBuilder('ci')
+                .leftJoin(CustomerCart, 'cc', 'cc.id = ci.cartId')
+                .where('cc.customerId = :customerId', { customerId })
+                .where('ci.productId = :productId', { productId })
+                .select(attributes.map((a) => `ci.${a}`))
+                .getOne();
+        } catch (error) {
+            this.logger.error(`Error in getProductInCart service, ${error}`);
             throw error;
         }
     }

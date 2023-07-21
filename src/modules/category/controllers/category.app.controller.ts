@@ -20,7 +20,7 @@ import { MODULE_NAME } from '../category.constant';
 
 @UseGuards(AuthenticationGuard, AuthorizationGuard)
 @Controller('/app/category')
-export class ProductAppController {
+export class CategoryAppController {
     constructor(
         private readonly i18n: I18nService,
         private readonly configService: ConfigService,

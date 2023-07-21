@@ -27,4 +27,8 @@ export default Joi.object({
     [ConfigKey.SENDGRID_SENDER_EMAIL]: Joi.string().required(),
     [ConfigKey.RESET_PASSWORD_OTP_EXPIRED_IN]: Joi.string().required(),
     [ConfigKey.REGISTER_USER_OTP_EXPIRED_IN]: Joi.string().required(),
+    [ConfigKey.AWS_API_ACCESS_KEY]: Joi.string().required(),
+    [ConfigKey.AWS_API_SECRET_ACCESS_KEY]: Joi.string().required(),
+    [ConfigKey.AWS_REGION]: Joi.string().required(),
+    [ConfigKey.AWS_S3_BUCKET]: Joi.string().required(),
 });
