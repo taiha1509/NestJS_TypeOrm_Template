@@ -9,7 +9,12 @@ import { I18nService } from 'nestjs-i18n';
 
 describe('ProductAppController', () => {
     let controller: ProductAppController;
-    const mockProductSqlService = {},
+    const mockProductSqlService = {
+            getProductById: jest.fn().mockImplementation((dto) => ({
+                id: Date.now(),
+                ...dto,
+            })),
+        },
         mockProductFeedbackSqlService = {};
     beforeEach(async () => {
         const module: TestingModule = await Test.createTestingModule({
@@ -33,5 +38,11 @@ describe('ProductAppController', () => {
 
     it('should be defined', () => {
         expect(controller).toBeDefined();
+    });
+
+    it('should get product details and return correct data', async () => {
+        expect(mockProductSqlService.getProductById(1)).toEqual({
+            id: expect.any(Number),
+        });
     });
 });
