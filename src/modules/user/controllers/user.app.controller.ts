@@ -15,8 +15,8 @@ import {
 import { ConfigService } from '@nestjs/config';
 import { I18nService } from 'nestjs-i18n';
 import { UserSqlService } from '../services/user.sql.service';
-import { ErrorResponse, SuccessResponse } from 'src/common/helpers/response';
-import { JoiValidationPipe } from 'src/common/pipe/joi.validation.pipe';
+import { ErrorResponse, SuccessResponse } from '@/common/helpers/response';
+import { JoiValidationPipe } from '@/common/pipe/joi.validation.pipe';
 import {
     createUserSchema,
     updateUserProfileSchema,

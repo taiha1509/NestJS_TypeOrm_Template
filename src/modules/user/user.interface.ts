@@ -1,4 +1,4 @@
-import { ICommonListQuery } from 'src/common/interfaces';
+import { ICommonListQuery } from '@/common/interfaces';
 import {
     SystemRole,
     UserGender,

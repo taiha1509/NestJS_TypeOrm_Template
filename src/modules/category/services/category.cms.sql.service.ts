@@ -7,7 +7,7 @@ import { ProductCategory } from '@/mysql-entity/product-category';
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { InjectRepository } from '@nestjs/typeorm';
-import { createWinstonLogger } from 'src/common/services/winston.service';
+import { createWinstonLogger } from '@/common/services/winston.service';
 import {
     Brackets,
     DataSource,

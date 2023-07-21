@@ -13,7 +13,7 @@ import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { InjectRepository } from '@nestjs/typeorm';
 import { hashSync } from 'bcrypt';
-import { createWinstonLogger } from 'src/common/services/winston.service';
+import { createWinstonLogger } from '@/common/services/winston.service';
 import {
     DataSource,
     FindOptionsSelect,

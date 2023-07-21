@@ -5,8 +5,8 @@ import {
     PHONE_NUMBER_MAX_LENGTH,
     TEXTAREA_MAX_LENGTH,
 } from './../../common/constants';
-import Joi from 'src/plugins/joi';
-import { CommonListQuerySchema } from 'src/common/constants';
+import Joi from '@/plugins/joi';
+import { CommonListQuerySchema } from '@/common/constants';
 import {
     UserOrderBy,
     SystemRole,

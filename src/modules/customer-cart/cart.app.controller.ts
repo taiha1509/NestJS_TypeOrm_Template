@@ -14,8 +14,8 @@ import {
 } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { I18nService } from 'nestjs-i18n';
-import { ErrorResponse, SuccessResponse } from 'src/common/helpers/response';
-import { JoiValidationPipe } from 'src/common/pipe/joi.validation.pipe';
+import { ErrorResponse, SuccessResponse } from '@/common/helpers/response';
+import { JoiValidationPipe } from '@/common/pipe/joi.validation.pipe';
 import { AuthenticationGuard } from '@/common/guards/authentication.guard';
 import { AuthorizationGuard } from '@/common/guards/authorization.guard';
 import { idSchema } from '@/modules/common/common.validator';

@@ -21,8 +21,8 @@ import { JwtService } from '@nestjs/jwt';
 import { compareSync } from 'bcrypt';
 import dayjs from 'dayjs';
 import { I18nService } from 'nestjs-i18n';
-import { ErrorResponse, SuccessResponse } from 'src/common/helpers/response';
-import { JoiValidationPipe } from 'src/common/pipe/joi.validation.pipe';
+import { ErrorResponse, SuccessResponse } from '@/common/helpers/response';
+import { JoiValidationPipe } from '@/common/pipe/joi.validation.pipe';
 import { UserSqlService } from '../../user/services/user.sql.service';
 import { MODULE_NAME, UserOTPType, UserTokenType } from '../auth.constant';
 import {

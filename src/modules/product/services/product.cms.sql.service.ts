@@ -10,7 +10,7 @@ import { User } from '@/mysql-entity/user.entity';
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { InjectRepository } from '@nestjs/typeorm';
-import { createWinstonLogger } from 'src/common/services/winston.service';
+import { createWinstonLogger } from '@/common/services/winston.service';
 import { DataSource, In, Not, Repository } from 'typeorm';
 import { MODULE_NAME } from '../product.constant';
 import { ICreateProductDTO, IUpdateProductDTO } from '../product.interface';

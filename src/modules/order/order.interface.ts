@@ -1,5 +1,4 @@
 import { ICommonListQuery } from '@/common/interfaces';
-import { OrderStatus } from 'aws-sdk/clients/outposts';
 import { CustomerOrderStatus, PaymentMethod } from './order.constant';
 
 export interface IBankingPaymentDetail {

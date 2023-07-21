@@ -1,9 +1,9 @@
-import Joi from 'src/plugins/joi';
+import Joi from '@/plugins/joi';
 import {
     CommonListQuerySchema,
     INPUT_TEXT_MAX_LENGTH,
     TEXTAREA_MAX_LENGTH,
-} from 'src/common/constants';
+} from '@/common/constants';
 import { CategoryOrderBy } from './category.constant';
 
 export const categoryListQuerySchema = Joi.object().keys({

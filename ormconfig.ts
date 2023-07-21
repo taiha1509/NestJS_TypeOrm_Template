@@ -4,7 +4,7 @@ import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 
 // ormconfig.ts
 export const config: TypeOrmModuleOptions = {
-    migrations: ['src/migration/*{.ts,.js}'],
+    migrations: ['@/migration/*{.ts,.js}'],
     synchronize: true,
     type: 'mysql',
     host: process.env.MYSQL_HOST,

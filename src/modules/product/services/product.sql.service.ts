@@ -16,8 +16,8 @@ import {
     DEFAULT_LIMIT_FOR_PAGINATION,
     DEFAULT_ORDER_BY,
     DEFAULT_ORDER_DIRECTION,
-} from 'src/common/constants';
-import { createWinstonLogger } from 'src/common/services/winston.service';
+} from '@/common/constants';
+import { createWinstonLogger } from '@/common/services/winston.service';
 import { Brackets, FindOptionsSelect, In, Repository } from 'typeorm';
 import {
     MODULE_NAME,

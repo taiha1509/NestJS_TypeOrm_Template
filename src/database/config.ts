@@ -10,8 +10,5 @@ export const AppDataSource = new DataSource({
     database: process.env.MYSQL_DATABASE_NAME,
     // synchronize: true,
     entities: ['**/*.entity.ts'],
-    migrations: [
-        'src/database/migrations/*.ts',
-        'src/database/seeds/*{.ts,.js}',
-    ],
+    migrations: ['@/database/migrations/*.ts', '@/database/seeds/*{.ts,.js}'],
 });

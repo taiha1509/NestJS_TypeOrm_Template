@@ -4,9 +4,9 @@ import {
     PHONE_NUMBER_MAX_LENGTH,
     Regex,
     TEXTAREA_MAX_LENGTH,
-} from 'src/common/constants';
+} from '@/common/constants';
 
-import Joi from 'src/plugins/joi';
+import Joi from '@/plugins/joi';
 import { UserGender } from '../user/user.constant';
 import { AuthProvider, OTP_LENGTH, UserOTPType } from './auth.constant';
 

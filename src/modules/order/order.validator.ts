@@ -6,7 +6,6 @@ import {
     TEXTAREA_MAX_LENGTH,
 } from '@/common/constants';
 import Joi from '@/plugins/joi';
-import { OrderStatus } from 'aws-sdk/clients/outposts';
 import {
     BankRule,
     CARD_NUMBER_LENGTH,
