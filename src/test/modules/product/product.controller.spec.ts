@@ -1,8 +1,8 @@
 import { JwtService } from '@nestjs/jwt';
-import { ProductSqlService } from '../services/product.sql.service';
-import { ProductAppController } from './product.app.controller';
+import { ProductSqlService } from '../../../modules/product/services/product.sql.service';
+import { ProductAppController } from '../../../modules/product/controllers/product.app.controller';
 import { TestingModule, Test } from '@nestjs/testing';
-import { ProductFeedbackSqlService } from '../services/product.feedback.sql.service';
+import { ProductFeedbackSqlService } from '../../../modules/product/services/product.feedback.sql.service';
 import { ConfigService } from '@nestjs/config';
 import { I18nModule } from '@/common/services/i18n.service';
 import { I18nService } from 'nestjs-i18n';
