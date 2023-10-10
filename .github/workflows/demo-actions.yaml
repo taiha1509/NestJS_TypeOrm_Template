@@ -15,3 +15,8 @@ jobs:
     steps:
       - run: kubectl cluster-info
       - run: kubectl get pods
+  deploy-alpine-pod:
+    runs-on: [linux]:
+    steps:
+      - run: kubectl get pods
+      - run: kubectl run alpine --image alpine --command sleep 4800
