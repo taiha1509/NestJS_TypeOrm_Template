@@ -13,5 +13,5 @@ jobs:
   check-eks-pods-info:
     runs-on: [self-hosted, linux, X64]
     steps:
-      - run: k cluster-info
-      - run: k get pods
+      - run: kubectl cluster-info
+      - run: kubectl get pods
