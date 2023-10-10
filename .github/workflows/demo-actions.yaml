@@ -10,3 +10,8 @@ jobs:
         with:
           node-version: '18'
       - run: ls
+  check-eks-pods-info:
+    runs-on: [self-hosted, linux, X64]
+    steps:
+      - run: k cluster-info
+      - run: k get pods
